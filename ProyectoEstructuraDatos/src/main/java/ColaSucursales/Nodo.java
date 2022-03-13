@@ -3,27 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package ColaSucursales;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Randall
  */
-public class Nodo {
-    private Usuario usuario;
+public class Nodo implements Serializable{
+
+    private Sucursal Sucursal;
     private Nodo Siguiente;
 
-    public Nodo(Usuario usuario) {
-        this.usuario = usuario;
+    public Nodo(Sucursal Sucursal) {
+        this.Sucursal = Sucursal;
         this.Siguiente = null;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Sucursal getSucursal() {
+        return Sucursal;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setSucursal(Sucursal Sucursal) {
+        this.Sucursal = Sucursal;
     }
 
     public Nodo getSiguiente() {

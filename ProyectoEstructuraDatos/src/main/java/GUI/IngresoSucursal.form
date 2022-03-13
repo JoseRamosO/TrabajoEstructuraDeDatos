@@ -26,33 +26,23 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtNombreSucursal" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblProvincia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtNombreSucursal" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNombreSucursal" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblCanton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtProvincia" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="txtCanton" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="txtHorario" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="txtCantidadPuestos" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="lblProvincia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lblNombreSucursal" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCanton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProvincia" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCanton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtHorario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCantidadPuestos" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="114" max="32767" attributes="0"/>
                   </Group>
@@ -163,6 +153,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btAceptarMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

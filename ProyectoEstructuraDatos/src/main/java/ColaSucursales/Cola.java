@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package ColaSucursales;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Randall
  */
-public class Cola {
-
+public class Cola implements Serializable{
     private Nodo Frente;
     private Nodo Atras;
     private int size;
@@ -31,7 +32,7 @@ public class Cola {
         }
     }
 
-    public void encolar(Usuario u) {
+    public void encolar(Sucursal u) {
         Nodo nuevoNodo = new Nodo(u);
         if (EsVacia()) {
             setFrente(nuevoNodo);
@@ -49,7 +50,7 @@ public class Cola {
         if (!EsVacia()) {
             while (aux != null) {
 
-                text = text + aux.getUsuario().getName() + ",";
+                text = text + aux.getSucursal().getNomSu()+ ",";
                 aux = aux.getSiguiente();
             }
             System.out.println(text);
