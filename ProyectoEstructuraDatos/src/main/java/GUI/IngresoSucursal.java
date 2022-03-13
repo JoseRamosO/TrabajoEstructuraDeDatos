@@ -5,17 +5,63 @@
  */
 package GUI;
 
+import ColaSucursales.Cola;
+import ColaSucursales.Sucursal;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Randall
  */
 public class IngresoSucursal extends javax.swing.JFrame {
 
-    /**
+    /*
      * Creates new form IngresoSucursal
      */
     public IngresoSucursal() {
         initComponents();
+    }
+
+    public void CreateSucursal() {
+        String NomSu = txtNombreSucursal.getText();
+        String Provincia = txtProvincia.getText();
+        String Canton = txtCanton.getText();
+        String HorarioAten = txtHorario.getText();
+        String CantPuesto = txtCantidadPuestos.getText();
+        Sucursal S = new Sucursal(NomSu, Provincia, Canton, HorarioAten, CantPuesto);
+        Cola cola = new Cola();
+
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Sucursal.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            Cola vcola = (Cola) input.readObject();
+            input.close();
+            miArchivo2.close();
+            cola = vcola;
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+
+        }
+        cola.encolar(S);
+        try {
+
+            FileOutputStream miArchivo = new FileOutputStream("Sucursal.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(cola);
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se registró correctamente en la Sucursal");
+            cola.listarCola();
+            this.dispose();
+
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
     }
 
     /**
@@ -69,6 +115,11 @@ public class IngresoSucursal extends javax.swing.JFrame {
         });
 
         btAceptar.setText("Aceptar");
+        btAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btAceptarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,27 +128,21 @@ public class IngresoSucursal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(txtNombreSucursal))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblProvincia)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel4))
-                                    .addGap(42, 42, 42)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombreSucursal)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNombreSucursal)
-                                    .addComponent(lblCanton)
-                                    .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCantidadPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(lblProvincia)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addGap(42, 42, 42))
+                            .addComponent(lblNombreSucursal)
+                            .addComponent(lblCanton)
+                            .addComponent(txtProvincia)
+                            .addComponent(txtCanton)
+                            .addComponent(txtHorario)
+                            .addComponent(txtCantidadPuestos))
                         .addGap(0, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -152,6 +197,12 @@ public class IngresoSucursal extends javax.swing.JFrame {
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAceptarMouseClicked
+       CreateSucursal();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAceptarMouseClicked
 
     /**
      * @param args the command line arguments

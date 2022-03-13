@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package ListaUsuarios;
 
 /**
  *
@@ -67,5 +67,4 @@ public class Usuario {
     public void setPrioridad(String Prioridad) {
         this.Prioridad = Prioridad;
     }
-    
 }
