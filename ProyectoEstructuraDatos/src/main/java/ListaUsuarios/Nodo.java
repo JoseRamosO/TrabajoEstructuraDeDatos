@@ -5,11 +5,13 @@
  */
 package ListaUsuarios;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Randall
  */
-public class Nodo {
+public class Nodo implements Serializable {
     
     private Usuario usuario;
     private Nodo Siguiente;

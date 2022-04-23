@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author Randall
  */
-public class Cola implements Serializable{
+public class Cola implements Serializable {
+
     private Nodo Frente;
     private Nodo Atras;
     private int size;
@@ -50,13 +51,66 @@ public class Cola implements Serializable{
         if (!EsVacia()) {
             while (aux != null) {
 
-                text = text + aux.getSucursal().getNomSu()+ ",";
+                text = text + aux.getSucursal().getNomSu() + ",";
                 aux = aux.getSiguiente();
             }
             System.out.println(text);
         } else {
             System.out.println("La cola esta vacia");
         }
+    }
+
+    public Cola EditarDatos(String NomSu, String Provincia, String Canton, String HorarioAten, String CantPuesto, String NomSuE, String ProvinciaE, String CantonE, String HorarioAtenE, String CantPuestoE) {
+
+        Nodo aux = getFrente();
+        Cola colatemp = new Cola();
+        if (!EsVacia()) {
+            while (aux != null) {
+                if (aux.getSucursal().getNomSu().equals(NomSu)
+                        && aux.getSucursal().getProvincia().equals(Provincia)
+                        && aux.getSucursal().getCanton().equals(Canton)
+                        && aux.getSucursal().getHorarioAten().equals(HorarioAten)
+                        && aux.getSucursal().getCantPuesto().equals(CantPuesto)) {
+                    aux.getSucursal().setNomSu(NomSuE);
+                    aux.getSucursal().setProvincia(ProvinciaE);
+                    aux.getSucursal().setCanton(CantonE);
+                    aux.getSucursal().setHorarioAten(HorarioAtenE);
+                    aux.getSucursal().setCantPuesto(CantPuestoE);
+                }
+                colatemp.encolar(aux.getSucursal());
+
+                aux = aux.getSiguiente();
+            }
+        } else {
+            System.out.println("La cola esta vacia");
+        }
+
+        return colatemp;
+    }
+
+    public Cola EliminarSucursal(String NomSu, String Provincia, String Canton, String HorarioAten, String CantPuesto) {
+        Nodo aux = getFrente();
+        Cola colatemp = new Cola();
+        if (!EsVacia()) {
+            while (aux != null) {
+                if (aux.getSucursal().getNomSu().equals(NomSu)
+                        && aux.getSucursal().getProvincia().equals(Provincia)
+                        && aux.getSucursal().getCanton().equals(Canton)
+                        && aux.getSucursal().getHorarioAten().equals(HorarioAten)
+                        && aux.getSucursal().getCantPuesto().equals(CantPuesto)) {
+
+                } else {
+                    colatemp.encolar(aux.getSucursal());
+                }
+
+                aux = aux.getSiguiente();
+            }
+            this.size = this.size--;
+        } else {
+            System.out.println("La cola esta vacia");
+        }
+
+        return colatemp;
     }
 
     public Nodo getFrente() {

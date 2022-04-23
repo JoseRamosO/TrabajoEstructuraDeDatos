@@ -5,23 +5,72 @@
  */
 package ListaUsuarios;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Randall
  */
-public class ListaSimple {
+public class ListaSimple implements Serializable {
 
-    private Nodo ultimo;
     private Nodo primero;
-    private int CantN;
+    private Nodo ultima;
+    private int CantNodos;
 
     public ListaSimple() {
-        this.ultimo = null;
         this.primero = null;
+        this.ultima = null;
+    }
+
+    public Nodo getPrimero() {
+        return primero;
+    }
+
+    public void setPrimero(Nodo primero) {
+        this.primero = primero;
+    }
+
+    public Nodo getUltima() {
+        return ultima;
+    }
+
+    public void setUltima(Nodo ultima) {
+        this.ultima = ultima;
+    }
+
+    public int getCantNodos() {
+        return CantNodos;
+    }
+
+    public void setCantNodos(int CantNodos) {
+        this.CantNodos = CantNodos;
     }
 
     public boolean esVacia() {
         return (this.primero == null);
+    }
+
+    public void insertarPrimero(Usuario p) {
+        Nodo nuevo = new Nodo(p);
+        if (esVacia()) {
+            this.ultima = nuevo;
+
+        } else {
+
+        }
+        nuevo.setSiguiente(primero);
+        this.primero = nuevo;
+    }
+
+    public void insertarFInal(Usuario p) {
+        Nodo nuevo = new Nodo(p);
+        if (esVacia()) {
+            this.primero = nuevo;
+
+        } else {
+            this.ultima.setSiguiente(nuevo);
+        }
+        this.ultima = nuevo;
     }
 
     public void RMPrimero() {
@@ -30,10 +79,10 @@ public class ListaSimple {
 
         } else {
             if (primero.getSiguiente() == null) {
-                this.ultimo = null;
+                this.ultima = null;
             }
             this.primero = primero.getSiguiente();
-            this.CantN--;
+            this.CantNodos--;
         }
     }
 
@@ -47,122 +96,112 @@ public class ListaSimple {
             if (primero.getSiguiente() == null) {
                 this.primero = null;
             }
-            while (actual != this.ultimo) {
+            while (actual != this.ultima) {
                 temp = actual;
                 actual = actual.getSiguiente();
             }
-            this.ultimo = temp;
-            this.ultimo.setSiguiente(null);
-            this.CantN--;
+            this.ultima = temp;
+            this.ultima.setSiguiente(null);
+            this.CantNodos--;
         }
     }
 
-    public void removerEnPosicion(int posicion) {
-        if (!this.esPosicionValida(posicion)) {
-            System.out.println("Indice no valido en la lista");
+    public void listar() {
+        Nodo actual = this.primero;
+        if (esVacia()) {
+            System.out.println("La lista esta vacia");
+
+        } else {
+            while (actual != null) {
+                System.out.println("" + actual.getUsuario().getName());
+                actual = actual.getSiguiente();
+            }
+        }
+
+    }
+
+    public void agregarOrdenP(Usuario u) {
+        Nodo nuevo = new Nodo(u);
+
+        if (esVacia()) {
+            this.insertarFInal(u);
         } else {
             Nodo actual = this.primero;
-            Nodo temp = this.primero;
-
-            if (posicion == 1) {
-                this.RMPrimero();
-            } else if (posicion == this.CantN) {
-                this.RMUltimo();
-            } else {
-                for (int i = 1; i < posicion; i++) {
-                    temp = actual;
-                    actual = actual.getSiguiente();
+            if (nuevo.getUsuario().getPrioridad().equals("Adulto mayor")) {
+                if (this.primero.getUsuario().getPrioridad().equals("Adulto mayor") && !this.ultima.getUsuario().getPrioridad().equals("Adulto mayor")) {
+                    int i = 1;
+                    while (actual.getUsuario().getPrioridad().equals("Adulto mayor") && actual.getSiguiente().getUsuario().getPrioridad().equals("Adulto mayor")) {
+                        i++;
+                        actual = actual.getSiguiente();
+                    }
+                    System.out.println("" + i);
+                    nuevo.setSiguiente(actual.getSiguiente());
+                    actual.setSiguiente(nuevo);
+                } else if (this.ultima.getUsuario().getPrioridad().equals("Adulto mayor")) {
+                    this.insertarFInal(u);
+                } else {
+                    this.insertarPrimero(u);
                 }
-                temp.setSiguiente(actual.getSiguiente());
-                actual.setSiguiente(null);
-                this.CantN--;
+            }
+            if (nuevo.getUsuario().getPrioridad().equals("Persona con alguna discapacidad")) {
+                if (this.primero.getUsuario().getPrioridad().equals("Mujer embarazada") || this.primero.getUsuario().getPrioridad().equals("Usuario")) {
+                    this.insertarPrimero(u);
+                } else if (this.ultima.getUsuario().getPrioridad().equals("Persona con alguna discapacidad") || this.ultima.getUsuario().getPrioridad().equals("Adulto mayor")) {
+                    this.insertarFInal(u);
+                } else {
+                    actual = this.primero;
+                    int w = 0;
+                    while (w == 0) {
+                        if ((actual.getUsuario().getPrioridad().equals("Persona con alguna discapacidad")
+                                && !actual.getSiguiente().getUsuario().getPrioridad().equals("Persona con alguna discapacidad"))
+                                || (actual.getUsuario().getPrioridad().equals("Adulto mayor")
+                                && (actual.getSiguiente().getUsuario().getPrioridad().equals("Mujer embarazada")
+                                || actual.getSiguiente().getUsuario().getPrioridad().equals("Usuario")))) {
+                            w = 1;
+                        }
+                        if (w == 0) {
+                            actual = actual.getSiguiente();
+                        }
+                    }
+                    nuevo.setSiguiente(actual.getSiguiente());
+                    actual.setSiguiente(nuevo);
+                }
+            }
+            if (nuevo.getUsuario().getPrioridad().equals("Mujer embarazada")) {
+                if (this.primero.getUsuario().getPrioridad().equals("Usuario")) {
+                    this.insertarPrimero(u);
+                } else if (this.ultima.getUsuario().getPrioridad().equals("Mujer embarazada") || this.ultima.getUsuario().getPrioridad().equals("Adulto Mayor") || this.ultima.getUsuario().getPrioridad().equals("Persona con alguna discapacidad")) {
+                    this.insertarFInal(u);
+                } else {
+                    actual = this.primero;
+                    int q = 0;
+                    while (q == 0) {
+                        if ((actual.getUsuario().getPrioridad().equals("Mujer embarazada")
+                                && !actual.getSiguiente().getUsuario().getPrioridad().equals("Mujer embarazada"))
+                                || ((actual.getUsuario().getPrioridad().equals("Adulto mayor")
+                                || actual.getUsuario().getPrioridad().equals("Persona con alguna discapacidad"))
+
+                                && actual.getSiguiente().getUsuario().getPrioridad().equals("Usuario"))) {
+                            q = 1;
+                        }
+                         if (q == 0) {
+                            actual = actual.getSiguiente();
+                        }
+                    }
+                    nuevo.setSiguiente(actual.getSiguiente());
+                    actual.setSiguiente(nuevo);
+                }
+            }
+            if (nuevo.getUsuario().getPrioridad().equals("Usuario")) {
+                this.insertarFInal(u);
             }
 
         }
-
+this.CantNodos = this.CantNodos + 1;
     }
 
     public boolean esPosicionValida(int indice) {
-        return indice > 0 && indice <= this.CantN + 1;
-    }
-
-    public void insertarEnPosicion(Usuario p, int posicion) {
-        if (!this.esPosicionValida(posicion)) {
-            System.out.println("Indice no valido en la lista");
-        } else {
-            Nodo nuevo = new Nodo(p);
-            Nodo actual = this.primero;
-            Nodo temp = this.primero;
-            if (posicion == 1) {
-                this.insertarPrimero(p);
-            } else if (posicion == this.CantN + 1) {
-                this.insertarFInal(p);
-            } else {
-                for (int j = 1; j <= (posicion - 1); j++) {
-                    if (j == (posicion - 1)) {
-                        nuevo.setSiguiente(primero.getSiguiente());
-                        this.primero.setSiguiente(nuevo);
-                        if (posicion == 2) {
-                            temp = this.primero;
-                        }
-                    } else {
-                        this.primero = this.primero.getSiguiente();
-                    }
-                }
-                this.primero = temp;
-                this.CantN++;
-            }
-
-        }
-    }
-
-    public void insertarPrimero(Usuario p) {
-        Nodo nuevo = new Nodo(p);
-        if (esVacia()) {
-            this.ultimo = nuevo;
-
-        } else {
-
-        }
-        nuevo.setSiguiente(primero);
-        this.primero = nuevo;
-        this.CantN = this.CantN + 1;
-    }
-
-    public void insertarFInal(Usuario p) {
-        Nodo nuevo = new Nodo(p);
-        if (esVacia()) {
-            this.primero = nuevo;
-
-        } else {
-            this.ultimo.setSiguiente(nuevo);
-        }
-        this.ultimo = nuevo;
-        this.CantN = this.CantN + 1;
-    }
-
-    public Nodo getUltimo() {
-        return ultimo;
-    }
-
-    public void setUltimo(Nodo ultimo) {
-        this.ultimo = ultimo;
-    }
-
-    public Nodo getPrimero() {
-        return primero;
-    }
-
-    public void setPrimero(Nodo primero) {
-        this.primero = primero;
-    }
-
-    public int getCantN() {
-        return CantN;
-    }
-
-    public void setCantN(int CantN) {
-        this.CantN = CantN;
+        return indice > 0 && indice <= this.CantNodos;
     }
 
 }
