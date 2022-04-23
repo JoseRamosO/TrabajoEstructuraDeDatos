@@ -7,7 +7,10 @@ package GUI;
 
 import ColaSucursales.Cola;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -19,6 +22,13 @@ public class VistaSucursales extends javax.swing.JFrame {
     /**
      * Creates new form VistaSucursales
      */
+    
+    
+    private String n ;
+        private String p;
+        private String c ;
+        private String ha ;
+        private String cp;
     public VistaSucursales() {
         initComponents();
     }
@@ -58,25 +68,29 @@ public class VistaSucursales extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+
             },
             new String [] {
-                "Nombre Sucursal", "Provincia", "Canton", "Horario", "Cantidad de Puestos"
-            }) {
-                Class[] types = new Class [] {
-                    java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    false, false, false, false
-                };
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
-                }
+                "Nombre Sucursal", "Provincia", "Canton", "Horario", "Numero de empleados"
             }
-        );
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setToolTipText("");
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -123,6 +137,11 @@ public class VistaSucursales extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 255, 204));
 
         lblEditar.setText("Guardar Cambios");
+        lblEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEditarMouseClicked(evt);
+            }
+        });
         lblEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lblEditarActionPerformed(evt);
@@ -130,6 +149,11 @@ public class VistaSucursales extends javax.swing.JFrame {
         });
 
         lblEliminar.setText("Eliminar");
+        lblEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminarMouseClicked(evt);
+            }
+        });
 
         lblSalir.setText("Salir");
 
@@ -269,16 +293,81 @@ public class VistaSucursales extends javax.swing.JFrame {
         JTable source = (JTable) evt.getSource();
         int row = source.rowAtPoint(evt.getPoint());
         int column = source.columnAtPoint(evt.getPoint());
-        String n = source.getModel().getValueAt(row, 0) + "";
-        String p = source.getModel().getValueAt(row, 1) + "";
-        String c = source.getModel().getValueAt(row, 2) + "";
-        String ha = source.getModel().getValueAt(row, 3) + "";
-        String cp = source.getModel().getValueAt(row, 4) + "";
+         n = source.getModel().getValueAt(row, 0) + "";
+         p = source.getModel().getValueAt(row, 1) + "";
+         c = source.getModel().getValueAt(row, 2) + "";
+         ha = source.getModel().getValueAt(row, 3) + "";
+         cp = source.getModel().getValueAt(row, 4) + "";
         
         this.UpdateDatos(n,p,c,ha,cp);
 
 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void lblEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseClicked
+        // TODO add your handling code here:
+        Cola cola = new Cola();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Sucursal.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            Cola vcola = (Cola) input.readObject();
+            input.close();
+            cola = vcola;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+
+        }
+        
+        try {
+
+            FileOutputStream miArchivo = new FileOutputStream("Sucursal.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(cola.EliminarSucursal(txtNomSu.getText(), txtProvincia.getText(), txtCanton.getText(), txtHorario.getText(), txtCantP.getText()));
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente en la Sucursal");
+            cola.listarCola();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        
+        
+        
+    }//GEN-LAST:event_lblEliminarMouseClicked
+
+    private void lblEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseClicked
+        // TODO add your handling code here:
+        
+        Cola cola = new Cola();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Sucursal.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            Cola vcola = (Cola) input.readObject();
+            input.close();
+            cola = vcola;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        Cola ColaSE=cola.EditarDatos(n, p, c, ha, cp, txtNomSu.getText() , txtProvincia.getText(), txtCanton.getText(), txtHorario.getText(), txtCantP.getText());
+        try {
+
+            FileOutputStream miArchivo = new FileOutputStream("Sucursal.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(ColaSE);
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se edito correctamente en la Sucursal");
+            cola.listarCola();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_lblEditarMouseClicked
     public void mostrarT(Cola cola) {
         String matriz[][] = new String[cola.getSize()][5];
         for (int i = 0; i < cola.getSize(); i++) {
@@ -289,12 +378,21 @@ public class VistaSucursales extends javax.swing.JFrame {
             matriz[i][4] = cola.getFrente().getSucursal().getCantPuesto();
             cola.setFrente(cola.getFrente().getSiguiente());
         }
+        
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                matriz,
-                new String[]{
-                    "Nombre Sucursal", "Provincia", "Canton", "Horario", "Cantidad de Puestos"
-                }
-        ));
+            matriz,
+            new String [] {
+               "Nombre Sucursal", "Provincia", "Canton", "Horario", "Cantidad de Puestos"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
 
     }
 

@@ -44,10 +44,10 @@ public class IngresoSucursal extends javax.swing.JFrame {
             miArchivo2.close();
             cola = vcola;
         } catch (Exception ex) {
-            System.out.println("Exception: " + ex.getMessage());
+            //System.out.println("Exception: " + ex.getMessage());
 
         }
-        cola.encolar(S);
+        cola.encolar(S); 
         try {
 
             FileOutputStream miArchivo = new FileOutputStream("Sucursal.su");
@@ -108,6 +108,11 @@ public class IngresoSucursal extends javax.swing.JFrame {
         });
 
         btCancelar.setText("Cancelar");
+        btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btCancelarMouseClicked(evt);
+            }
+        });
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelarActionPerformed(evt);
@@ -196,6 +201,7 @@ public class IngresoSucursal extends javax.swing.JFrame {
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAceptarMouseClicked
@@ -203,6 +209,11 @@ public class IngresoSucursal extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btAceptarMouseClicked
+
+    private void btCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelarMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btCancelarMouseClicked
 
     /**
      * @param args the command line arguments
