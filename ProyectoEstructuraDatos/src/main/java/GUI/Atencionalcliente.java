@@ -5,12 +5,15 @@
  */
 package GUI;
 
+import Arboltransferencias.Arbol;
+import Arboltransferencias.Transferencia;
 import ListaCircularDobleServicios.ListaCircularDoble;
 import ListaCircularDobleServicios.NodoLCD;
 import ListaCircularEjecutivo.ListaCircularSimple;
 import ListaCircularEjecutivo.NodoLCS;
 import ListaDobleAtencionC.AtencionC;
 import ListaDobleAtencionC.ListaDoble;
+import ListaDobleAtencionC.NodoLD;
 import ListaUsuarios.ListaSimple;
 import ListaUsuarios.Nodo;
 import java.io.FileInputStream;
@@ -54,11 +57,17 @@ public class Atencionalcliente extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(43, 56, 97));
 
-        jPanel1.setBackground(new java.awt.Color(255, 51, 255));
+        jPanel1.setBackground(new java.awt.Color(43, 56, 97));
 
+        jTable3.setBackground(new java.awt.Color(5, 12, 24));
+        jTable3.setForeground(new java.awt.Color(255, 255, 255));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -77,6 +86,8 @@ public class Atencionalcliente extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
+        jButton1.setBackground(new java.awt.Color(5, 12, 24));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Actualizar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,26 +107,28 @@ public class Atencionalcliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(49, 49, 49)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
+                        .addGap(122, 122, 122)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(43, 56, 97));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setBackground(new java.awt.Color(5, 12, 24));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -126,6 +139,8 @@ public class Atencionalcliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton2.setBackground(new java.awt.Color(5, 12, 24));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Atender");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -140,31 +155,30 @@ public class Atencionalcliente extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(21, 21, 21)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(149, 149, 149)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(43, 56, 97));
 
+        jTable2.setBackground(new java.awt.Color(5, 12, 24));
+        jTable2.setForeground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Ejecutivo", "Servicio", "Cliente", "Servicio"
@@ -180,20 +194,57 @@ public class Atencionalcliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
+        jButton3.setBackground(new java.awt.Color(5, 12, 24));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Resolver");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(179, 179, 179))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 51));
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Atencion de Casos");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(396, 396, 396)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,13 +258,19 @@ public class Atencionalcliente extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,6 +308,19 @@ public class Atencionalcliente extends javax.swing.JFrame {
             System.out.println("Exception: " + ex.getMessage());
 
         }
+        ListaDoble LD = new ListaDoble();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Atencion.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            ListaDoble vLD = (ListaDoble) input.readObject();
+            input.close();
+            miArchivo2.close();
+            LD = vLD;
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        this.mostrarLD(LD);
         this.mostrarLC(LCS);
         this.mostrarC(LS);
     }//GEN-LAST:event_jButton1MouseClicked
@@ -284,73 +354,114 @@ public class Atencionalcliente extends javax.swing.JFrame {
         }
         NodoLCS actual = LCS.getPrimero();
         NodoLCS Ejecutivo = null;
-        do {
-            if (actual.getEjecutivo().getEstado().equals("Disponible")) {
-                Ejecutivo = actual;
-                actual.getEjecutivo().setEstado("Ocupado");
-                try {
-                    FileOutputStream miArchivo = new FileOutputStream("Ejecutivo.su");
-                    ObjectOutputStream output = new ObjectOutputStream(miArchivo);
-                    output.writeObject(LCS);
-                    output.close();
-                    miArchivo.close();
-                    JOptionPane.showMessageDialog(null, "Se registró correctamente en el Ejecutivo");
-                    LCS.listar();
+        if (LS.getCantNodos() != 0) {
+            do {
+                if (actual.getEjecutivo().getEstado().equals("Disponible")) {
+                    Ejecutivo = actual;
+                    actual.getEjecutivo().setEstado("Ocupado");
+                    try {
+                        FileOutputStream miArchivo = new FileOutputStream("Ejecutivo.su");
+                        ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+                        output.writeObject(LCS);
+                        output.close();
+                        miArchivo.close();
+                        JOptionPane.showMessageDialog(null, "Se registró correctamente en el Ejecutivo");
+                        LCS.listar();
 
-                } catch (Exception ex) {
-                    System.out.println("Exception: " + ex.getMessage());
-                }
-                LS.RMPrimero();
-                try {
-                    FileOutputStream miArchivo = new FileOutputStream("usuario.su");
-                    ObjectOutputStream output = new ObjectOutputStream(miArchivo);
-                    output.writeObject(LS);
-                    output.close();
-                    miArchivo.close();
-                    JOptionPane.showMessageDialog(null, "Se registró correctamente el usuario");
-                    LS.listar();
+                    } catch (Exception ex) {
+                        System.out.println("Exception: " + ex.getMessage());
+                    }
+                    LS.RMPrimero();
+                    try {
+                        FileOutputStream miArchivo = new FileOutputStream("usuario.su");
+                        ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+                        output.writeObject(LS);
+                        output.close();
+                        miArchivo.close();
+                        JOptionPane.showMessageDialog(null, "Se registró correctamente el usuario");
+                        LS.listar();
 
-                } catch (Exception ex) {
-                    System.out.println("Exception: " + ex.getMessage());
+                    } catch (Exception ex) {
+                        System.out.println("Exception: " + ex.getMessage());
+                    }
+                    this.mostrarLC(LCS);
+                    this.mostrarC(LS);
+                    actual = LCS.getPrimero();
+                } else {
+                    actual = actual.getSiguiente();
                 }
-                this.mostrarLC(LCS);
-                this.mostrarC(LS);
-                actual = LCS.getPrimero();
-            } else {
-                actual = actual.getSiguiente();
+            } while (actual != LCS.getPrimero());
+            ListaCircularDoble LCD = new ListaCircularDoble();
+            try {
+                FileInputStream miArchivo2;
+                miArchivo2 = new FileInputStream("Servicios.su");
+                ObjectInputStream input = new ObjectInputStream(miArchivo2);
+                ListaCircularDoble vLCD = (ListaCircularDoble) input.readObject();
+                input.close();
+                miArchivo2.close();
+                LCD = vLCD;
+            } catch (Exception ex) {
+                System.out.println("Exception: " + ex.getMessage());
             }
-        } while (actual != LCS.getPrimero());
-        ListaCircularDoble LCD = new ListaCircularDoble();
-        try {
-            FileInputStream miArchivo2;
-            miArchivo2 = new FileInputStream("Servicios.su");
-            ObjectInputStream input = new ObjectInputStream(miArchivo2);
-            ListaCircularDoble vLCD = (ListaCircularDoble) input.readObject();
-            input.close();
-            miArchivo2.close();
-            LCD = vLCD;
-        } catch (Exception ex) {
-            System.out.println("Exception: " + ex.getMessage());
+            NodoLCD aux = LCD.getPrimero();
+            NodoLCD Servicio = null;
+            DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+            String fyh = "" + dtf3.format(LocalDateTime.now());
+
+            do {
+                if (aux.getServicios().getNombre().equals(Usuario.getUsuario().getTipodeTransaccion())) {
+                    Servicio = aux;
+                }else if(aux.getServicios().getCodigo()==1000){
+                    Servicio = aux;
+                }
+
+                aux = aux.getSiguiente();
+            } while (aux != LCD.getPrimero());
+            aux = LCD.getPrimero();
+            ListaDoble LD = new ListaDoble();
+            try {
+                FileInputStream miArchivo2;
+                miArchivo2 = new FileInputStream("Atencion.su");
+                ObjectInputStream input = new ObjectInputStream(miArchivo2);
+                ListaDoble vLD = (ListaDoble) input.readObject();
+                input.close();
+                miArchivo2.close();
+                LD = vLD;
+            } catch (Exception ex) {
+                System.out.println("Exception: " + ex.getMessage());
+            }
+            LD.insertarFInal(new AtencionC(Usuario.getUsuario(), Ejecutivo.getEjecutivo(), fyh, Servicio.getServicios()));
+            try {
+                FileOutputStream miArchivo = new FileOutputStream("Atencion.su");
+                ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+                output.writeObject(LD);
+                output.close();
+                miArchivo.close();
+                JOptionPane.showMessageDialog(null, "Se registró correctamente el tramite");
+                LD.listarAdelante();
+
+            } catch (Exception ex) {
+                System.out.println("Exception: " + ex.getMessage());
+            }
+            try {
+                FileInputStream miArchivo2;
+                miArchivo2 = new FileInputStream("Atencion.su");
+                ObjectInputStream input = new ObjectInputStream(miArchivo2);
+                ListaDoble vLD = (ListaDoble) input.readObject();
+                input.close();
+                miArchivo2.close();
+                LD = vLD;
+            } catch (Exception ex) {
+                System.out.println("Exception: " + ex.getMessage());
+            }
+            this.mostrarLD(LD);
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay usuarios que atender");
         }
-        NodoLCD aux = LCD.getPrimero();
-        NodoLCD Servicio = null;
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
-        String fyh = "" + dtf3.format(LocalDateTime.now());
-        do {
-            if (aux.getServicios().getNombre().equals(Usuario.getUsuario().getTipodeTransaccion())) {
-                Servicio = aux;
-            }
+    }//GEN-LAST:event_jButton2MouseClicked
 
-            aux = aux.getSiguiente();
-        } while (aux != LCD.getPrimero());
-        aux = LCD.getPrimero();
-        do {
-            if (aux.getServicios().getCodigo() == 1000) {
-                Servicio = aux;
-            }
-
-            aux = aux.getSiguiente();
-        } while (aux != LCD.getPrimero());
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
         ListaDoble LD = new ListaDoble();
         try {
             FileInputStream miArchivo2;
@@ -363,7 +474,104 @@ public class Atencionalcliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
-        LD.insertarFInal(new AtencionC(Usuario.getUsuario(), Ejecutivo.getEjecutivo(), fyh, Servicio.getServicios()));
+        Arbol arbol = new Arbol();
+        int contid = 0;
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Transferencia.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            Arbol varbol = (Arbol) input.readObject();
+            int vcontid = (int) input.readObject();
+            input.close();
+            miArchivo2.close();
+            arbol = varbol;
+            contid = vcontid;
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        NodoLD actual = LD.getPrimero();
+        if (LD.esVacia()) {
+            System.out.println("La lista esta vacia");
+
+        } else {
+            while (actual != null) {
+                contid++;
+                arbol.insertar(new Transferencia(
+                        actual.getAtencionC().getUsuario(),
+                        actual.getAtencionC().getEjecutivo(),
+                        actual.getAtencionC().getFechayHora(),
+                        actual.getAtencionC().getServicio(), contid
+                ));
+                actual = actual.getSiguiente();
+            }
+        }
+        try {
+            FileOutputStream miArchivo = new FileOutputStream("Transferencia.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(arbol);
+            output.writeObject(contid);
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se transfirio correctamente los datos al modulo de transferencia");
+            arbol.listarInOrder();
+
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        try {
+            FileOutputStream miArchivo = new FileOutputStream("Atencion.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(LD);
+            output.close();
+            miArchivo.close();
+            LD.listarAdelante();
+
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        if (LD.esVacia()) {
+            System.out.println("La lista esta vacia");
+
+        } else {
+            ListaDoble vaciar = new ListaDoble();
+            LD = vaciar;
+        }
+        this.mostrarLD(LD);
+        ListaCircularSimple LCS = new ListaCircularSimple();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Ejecutivo.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            ListaCircularSimple vLCS = (ListaCircularSimple) input.readObject();
+            input.close();
+            LCS = vLCS;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        NodoLCS aux = LCS.getPrimero();
+        do {
+            if (aux.getEjecutivo().getEstado().equals("Ocupado")) {
+                aux.getEjecutivo().setEstado("Disponible");
+                aux.getEjecutivo().setNombre_Cliente("");
+                this.mostrarLC(LCS);
+            }
+            aux = aux.getSiguiente();
+
+        } while (aux != LCS.getPrimero());
+        try {
+            FileOutputStream miArchivo = new FileOutputStream("Ejecutivo.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(LCS);
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se registró correctamente en el Ejecutivo");
+            LCS.listar();
+
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+
         try {
             FileOutputStream miArchivo = new FileOutputStream("Atencion.su");
             ObjectOutputStream output = new ObjectOutputStream(miArchivo);
@@ -376,19 +584,8 @@ public class Atencionalcliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
-        try {
-            FileInputStream miArchivo2;
-            miArchivo2 = new FileInputStream("Atencion.su");
-            ObjectInputStream input = new ObjectInputStream(miArchivo2);
-            ListaDoble vLD = (ListaDoble) input.readObject();
-            input.close();
-            miArchivo2.close();
-            LD = vLD;
-        } catch (Exception ex) {
-            System.out.println("Exception: " + ex.getMessage());
-        }
-        this.mostrarLD(LD);
-    }//GEN-LAST:event_jButton2MouseClicked
+
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -505,9 +702,12 @@ public class Atencionalcliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

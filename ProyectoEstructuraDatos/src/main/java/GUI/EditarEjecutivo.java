@@ -5,6 +5,17 @@
  */
 package GUI;
 
+import ColaSucursales.Cola;
+import ColaSucursales.Nodo;
+import ListaCircularEjecutivo.ListaCircularSimple;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author Jose Ramos
@@ -14,6 +25,11 @@ public class EditarEjecutivo extends javax.swing.JFrame {
     /**
      * Creates new form EditarEjecutivo
      */
+    private String name;
+    private int cedula;
+    private String sucursal;
+    private String estado;
+
     public EditarEjecutivo() {
         initComponents();
     }
@@ -27,21 +43,415 @@ public class EditarEjecutivo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtcedula = new javax.swing.JTextField();
+        txtname = new javax.swing.JTextField();
+        CBestado = new javax.swing.JComboBox<>();
+        CBsucursal = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(43, 56, 97));
+
+        jTable1.setBackground(new java.awt.Color(5, 12, 24));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Cedula", "Sucursal", "Estado"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setBackground(new java.awt.Color(5, 12, 24));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Actualizar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(43, 56, 97));
+
+        jPanel3.setBackground(new java.awt.Color(43, 56, 97));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nombre");
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Cedula");
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Sucursal");
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Estado");
+
+        txtcedula.setBackground(new java.awt.Color(5, 12, 24));
+        txtcedula.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtname.setBackground(new java.awt.Color(5, 12, 24));
+        txtname.setForeground(new java.awt.Color(255, 255, 255));
+
+        CBestado.setBackground(new java.awt.Color(255, 255, 255));
+        CBestado.setForeground(new java.awt.Color(0, 0, 0));
+        CBestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Ocupado" }));
+
+        DefaultComboBoxModel<String> model=new DefaultComboBoxModel<String>();
+        Cola cola = new Cola();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Sucursal.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            Cola vcola = (Cola) input.readObject();
+            input.close();
+            cola = vcola;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+
+        }
+        Nodo actual = cola.getFrente();
+        if (cola.EsVacia()) {
+            System.out.println("Lista vacia");
+        } else {
+            do {
+                model.addElement(actual.getSucursal().getNomSu());
+                actual = actual.getSiguiente();
+            } while (actual != null);
+        }
+        CBsucursal.setBackground(new java.awt.Color(255, 255, 255));
+        CBsucursal.setForeground(new java.awt.Color(255, 255, 255));
+        CBsucursal.setModel(model);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CBsucursal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtname)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBestado, javax.swing.GroupLayout.Alignment.TRAILING, 0, 181, Short.MAX_VALUE)
+                    .addComponent(txtcedula, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CBsucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CBestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
+        jButton2.setBackground(new java.awt.Color(5, 12, 24));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Salir");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(5, 12, 24));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Eliminar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(5, 12, 24));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Cambiar datos");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jButton4)
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 51));
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Editar/Eliminar Ejecutivo");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        ListaCircularSimple LCS = new ListaCircularSimple();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Ejecutivo.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            ListaCircularSimple vLCS = (ListaCircularSimple) input.readObject();
+            input.close();
+            LCS = vLCS;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+
+        }
+        mostrarLCS(LCS);
+
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+
+        this.dispose();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        ListaCircularSimple LCS = new ListaCircularSimple();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Ejecutivo.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            ListaCircularSimple vLCS = (ListaCircularSimple) input.readObject();
+            input.close();
+            LCS = vLCS;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+
+        }
+
+        try {
+
+            FileOutputStream miArchivo = new FileOutputStream("Ejecutivo.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(LCS.EliminarEjecutivo(txtname.getText(), Integer.parseInt(txtcedula.getText())
+            ));
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente el Ejecutivo");
+            LCS.listar();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+
+
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+
+        ListaCircularSimple LCS = new ListaCircularSimple();
+        try {
+            FileInputStream miArchivo2;
+            miArchivo2 = new FileInputStream("Ejecutivo.su");
+            ObjectInputStream input = new ObjectInputStream(miArchivo2);
+            ListaCircularSimple vLCS = (ListaCircularSimple) input.readObject();
+            input.close();
+            LCS = vLCS;
+            miArchivo2.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        ListaCircularSimple LCSSE = LCS.EditarDatosLCS(name, cedula, sucursal, estado, txtname.getText(), Integer.parseInt(txtcedula.getText()), CBsucursal.getSelectedItem().toString(), CBestado.getSelectedItem().toString());
+        try {
+
+            FileOutputStream miArchivo = new FileOutputStream("Ejecutivo.su");
+            ObjectOutputStream output = new ObjectOutputStream(miArchivo);
+            output.writeObject(LCSSE);
+            output.close();
+            miArchivo.close();
+            JOptionPane.showMessageDialog(null, "Se edito correctamente el Ejecutivo");
+            LCS.listar();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        JTable source = (JTable) evt.getSource();
+        int row = source.rowAtPoint(evt.getPoint());
+        int column = source.columnAtPoint(evt.getPoint());
+        name = source.getModel().getValueAt(row, 0) + "";
+        cedula = Integer.parseInt(source.getModel().getValueAt(row, 1) + "");
+        sucursal = source.getModel().getValueAt(row, 2) + "";
+        estado = source.getModel().getValueAt(row, 3) + "";
+        this.UpdateDatos(name, cedula,sucursal,estado);
+
+
+    }//GEN-LAST:event_jTable1MouseClicked
+    public void UpdateDatos(String name, int code,String sucursal,String estado) {
+        //Abrir el archivo y sacar la cola
+        CBsucursal.getModel().setSelectedItem(sucursal);
+         CBestado.getModel().setSelectedItem(estado);
+        txtname.setText(name);
+        txtcedula.setText(""+code);
+    }
+    public void mostrarLCS(ListaCircularSimple LCS) {
+        String matriz[][] = new String[LCS.getCantNodos()][4];
+        for (int i = 0; i < LCS.getCantNodos(); i++) {
+            matriz[i][0] = LCS.getPrimero().getEjecutivo().getNombre();
+            matriz[i][1] = LCS.getPrimero().getEjecutivo().getCedula() + "";
+            matriz[i][2] = LCS.getPrimero().getEjecutivo().getSucursal();
+            matriz[i][3] = LCS.getPrimero().getEjecutivo().getEstado();
+            LCS.setPrimero(LCS.getPrimero().getSiguiente());
+        }
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                matriz,
+                new String[]{
+                    "Nombre", "Cedula", "Sucursal", "Estado"
+                }
+        ) {
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+
+    }
 
     /**
      * @param args the command line arguments
@@ -79,5 +489,24 @@ public class EditarEjecutivo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBestado;
+    private javax.swing.JComboBox<String> CBsucursal;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtcedula;
+    private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }

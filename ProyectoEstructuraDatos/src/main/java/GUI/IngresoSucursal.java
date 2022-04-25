@@ -73,40 +73,64 @@ public class IngresoSucursal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombreSucursal = new javax.swing.JLabel();
-        lblCanton = new javax.swing.JLabel();
-        lblProvincia = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtNombreSucursal = new javax.swing.JTextField();
-        txtProvincia = new javax.swing.JTextField();
-        txtCanton = new javax.swing.JTextField();
-        txtHorario = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         txtCantidadPuestos = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtHorario = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtCanton = new javax.swing.JTextField();
+        lblCanton = new javax.swing.JLabel();
+        txtProvincia = new javax.swing.JTextField();
+        lblProvincia = new javax.swing.JLabel();
+        txtNombreSucursal = new javax.swing.JTextField();
+        lblNombreSucursal = new javax.swing.JLabel();
         btCancelar = new javax.swing.JButton();
         btAceptar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(43, 56, 97));
 
-        lblNombreSucursal.setText("Nombre de la sucursal");
+        jPanel1.setBackground(new java.awt.Color(43, 56, 97));
 
-        lblCanton.setText("Canton");
+        txtCantidadPuestos.setBackground(new java.awt.Color(5, 12, 24));
+        txtCantidadPuestos.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblProvincia.setText("Provincia ");
-
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cantidad de puestos de atencion");
 
+        txtHorario.setBackground(new java.awt.Color(5, 12, 24));
+        txtHorario.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Horario de atención ");
 
-        jLabel6.setText("Sucursal");
+        txtCanton.setBackground(new java.awt.Color(5, 12, 24));
+        txtCanton.setForeground(new java.awt.Color(255, 255, 255));
 
+        lblCanton.setForeground(new java.awt.Color(255, 255, 255));
+        lblCanton.setText("Canton");
+
+        txtProvincia.setBackground(new java.awt.Color(5, 12, 24));
+        txtProvincia.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblProvincia.setForeground(new java.awt.Color(255, 255, 255));
+        lblProvincia.setText("Provincia ");
+
+        txtNombreSucursal.setBackground(new java.awt.Color(5, 12, 24));
+        txtNombreSucursal.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreSucursalActionPerformed(evt);
             }
         });
 
+        lblNombreSucursal.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreSucursal.setText("Nombre de la sucursal");
+
+        btCancelar.setBackground(new java.awt.Color(5, 12, 24));
+        btCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btCancelar.setText("Cancelar");
         btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,6 +143,8 @@ public class IngresoSucursal extends javax.swing.JFrame {
             }
         });
 
+        btAceptar.setBackground(new java.awt.Color(5, 12, 24));
+        btAceptar.setForeground(new java.awt.Color(255, 255, 255));
         btAceptar.setText("Aceptar");
         btAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,46 +152,38 @@ public class IngresoSucursal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreSucursal)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProvincia)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4))
-                                .addGap(42, 42, 42))
-                            .addComponent(lblNombreSucursal)
-                            .addComponent(lblCanton)
-                            .addComponent(txtProvincia)
-                            .addComponent(txtCanton)
-                            .addComponent(txtHorario)
-                            .addComponent(txtCantidadPuestos))
-                        .addGap(0, 114, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btAceptar)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jLabel6)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btAceptar)
+                .addGap(55, 55, 55))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombreSucursal)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblProvincia)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(42, 42, 42))
+                    .addComponent(lblNombreSucursal)
+                    .addComponent(lblCanton)
+                    .addComponent(txtProvincia)
+                    .addComponent(txtCanton)
+                    .addComponent(txtHorario)
+                    .addComponent(txtCantidadPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(lblNombreSucursal)
                 .addGap(2, 2, 2)
                 .addComponent(txtNombreSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,10 +203,49 @@ public class IngresoSucursal extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCantidadPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar)
                     .addComponent(btAceptar))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 51));
+
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Registro de Sucursal");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel6)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -256,6 +313,8 @@ public class IngresoSucursal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCanton;
     private javax.swing.JLabel lblNombreSucursal;
     private javax.swing.JLabel lblProvincia;

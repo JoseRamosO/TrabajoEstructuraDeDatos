@@ -22,13 +22,12 @@ public class VistaSucursales extends javax.swing.JFrame {
     /**
      * Creates new form VistaSucursales
      */
-    
-    
-    private String n ;
-        private String p;
-        private String c ;
-        private String ha ;
-        private String cp;
+    private String n;
+    private String p;
+    private String c;
+    private String ha;
+    private String cp;
+
     public VistaSucursales() {
         initComponents();
     }
@@ -61,10 +60,15 @@ public class VistaSucursales extends javax.swing.JFrame {
         txtHorario = new javax.swing.JTextField();
         CantP = new javax.swing.JLabel();
         txtCantP = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(43, 56, 97));
+
+        jScrollPane2.setBackground(new java.awt.Color(5, 12, 24));
+        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,6 +102,8 @@ public class VistaSucursales extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(5, 12, 24));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cargar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,27 +121,28 @@ public class VistaSucursales extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(172, 172, 172)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(43, 56, 97));
 
+        lblEditar.setBackground(new java.awt.Color(5, 12, 24));
+        lblEditar.setForeground(new java.awt.Color(255, 255, 255));
         lblEditar.setText("Guardar Cambios");
         lblEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -148,6 +155,8 @@ public class VistaSucursales extends javax.swing.JFrame {
             }
         });
 
+        lblEliminar.setBackground(new java.awt.Color(5, 12, 24));
+        lblEliminar.setForeground(new java.awt.Color(255, 255, 255));
         lblEliminar.setText("Eliminar");
         lblEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,17 +164,41 @@ public class VistaSucursales extends javax.swing.JFrame {
             }
         });
 
+        lblSalir.setBackground(new java.awt.Color(5, 12, 24));
+        lblSalir.setForeground(new java.awt.Color(255, 255, 255));
         lblSalir.setText("Salir");
 
+        jPanel3.setBackground(new java.awt.Color(43, 56, 97));
+
+        lblNomSu.setForeground(new java.awt.Color(255, 255, 255));
         lblNomSu.setText("Nombre de la Sucursal");
 
+        txtNomSu.setBackground(new java.awt.Color(5, 12, 24));
+        txtNomSu.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblProvin.setForeground(new java.awt.Color(255, 255, 255));
         lblProvin.setText("Provincia");
 
+        txtProvincia.setBackground(new java.awt.Color(5, 12, 24));
+        txtProvincia.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblCanton.setForeground(new java.awt.Color(255, 255, 255));
         lblCanton.setText("Canton");
 
+        txtCanton.setBackground(new java.awt.Color(5, 12, 24));
+        txtCanton.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblHorario.setForeground(new java.awt.Color(255, 255, 255));
         lblHorario.setText("Horario de atencion");
 
+        txtHorario.setBackground(new java.awt.Color(5, 12, 24));
+        txtHorario.setForeground(new java.awt.Color(255, 255, 255));
+
+        CantP.setForeground(new java.awt.Color(255, 255, 255));
         CantP.setText("Cantidad de puestos de atencion");
+
+        txtCantP.setBackground(new java.awt.Color(5, 12, 24));
+        txtCantP.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -225,20 +258,43 @@ public class VistaSucursales extends javax.swing.JFrame {
                         .addComponent(lblEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEliminar)
                     .addComponent(lblSalir)
                     .addComponent(lblEditar))
                 .addGap(51, 51, 51))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 51));
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Editar/Eliminar Sucursales");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(120, 120, 120))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,11 +306,16 @@ public class VistaSucursales extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -293,13 +354,13 @@ public class VistaSucursales extends javax.swing.JFrame {
         JTable source = (JTable) evt.getSource();
         int row = source.rowAtPoint(evt.getPoint());
         int column = source.columnAtPoint(evt.getPoint());
-         n = source.getModel().getValueAt(row, 0) + "";
-         p = source.getModel().getValueAt(row, 1) + "";
-         c = source.getModel().getValueAt(row, 2) + "";
-         ha = source.getModel().getValueAt(row, 3) + "";
-         cp = source.getModel().getValueAt(row, 4) + "";
-        
-        this.UpdateDatos(n,p,c,ha,cp);
+        n = source.getModel().getValueAt(row, 0) + "";
+        p = source.getModel().getValueAt(row, 1) + "";
+        c = source.getModel().getValueAt(row, 2) + "";
+        ha = source.getModel().getValueAt(row, 3) + "";
+        cp = source.getModel().getValueAt(row, 4) + "";
+
+        this.UpdateDatos(n, p, c, ha, cp);
 
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -319,7 +380,7 @@ public class VistaSucursales extends javax.swing.JFrame {
             System.out.println("Exception: " + ex.getMessage());
 
         }
-        
+
         try {
 
             FileOutputStream miArchivo = new FileOutputStream("Sucursal.su");
@@ -332,14 +393,13 @@ public class VistaSucursales extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_lblEliminarMouseClicked
 
     private void lblEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseClicked
         // TODO add your handling code here:
-        
+
         Cola cola = new Cola();
         try {
             FileInputStream miArchivo2;
@@ -352,7 +412,7 @@ public class VistaSucursales extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
-        Cola ColaSE=cola.EditarDatos(n, p, c, ha, cp, txtNomSu.getText() , txtProvincia.getText(), txtCanton.getText(), txtHorario.getText(), txtCantP.getText());
+        Cola ColaSE = cola.EditarDatos(n, p, c, ha, cp, txtNomSu.getText(), txtProvincia.getText(), txtCanton.getText(), txtHorario.getText(), txtCantP.getText());
         try {
 
             FileOutputStream miArchivo = new FileOutputStream("Sucursal.su");
@@ -365,8 +425,8 @@ public class VistaSucursales extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
-        
-        
+
+
     }//GEN-LAST:event_lblEditarMouseClicked
     public void mostrarT(Cola cola) {
         String matriz[][] = new String[cola.getSize()][5];
@@ -378,19 +438,19 @@ public class VistaSucursales extends javax.swing.JFrame {
             matriz[i][4] = cola.getFrente().getSucursal().getCantPuesto();
             cola.setFrente(cola.getFrente().getSiguiente());
         }
-        
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            matriz,
-            new String [] {
-               "Nombre Sucursal", "Provincia", "Canton", "Horario", "Cantidad de Puestos"
-            }
+                matriz,
+                new String[]{
+                    "Nombre Sucursal", "Provincia", "Canton", "Horario", "Cantidad de Puestos"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                 false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
 
@@ -398,17 +458,17 @@ public class VistaSucursales extends javax.swing.JFrame {
 
     public void UpdateDatos(String NomSu, String Provincia, String Canton, String HorarioAten, String CantPuesto) {
         //Abrir el archivo y sacar la cola
-        
+
         txtNomSu.setText(NomSu);
         txtCantP.setText(CantPuesto);
         txtHorario.setText(HorarioAten);
         txtProvincia.setText(Provincia);
         txtCanton.setText(Canton);
     }
-    
-        /**
-         * @param args the command line arguments
-         */
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -446,9 +506,11 @@ public class VistaSucursales extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CantP;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCanton;
