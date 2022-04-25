@@ -18,16 +18,13 @@ public class ListaCircularSimple implements Serializable{
         return (this.primero == null);
     }
     //-----------------------------------------------------------------------
-    public ListaCircularSimple EliminarEjecutivo(String Nombre, int Cedula, String Sucursal, String Estado, String Nombre_Cliente) {
+    public ListaCircularSimple EliminarEjecutivo(String Nombre, int Cedula) {
         NodoLCS aux = getPrimero();
         ListaCircularSimple LCStemp = new ListaCircularSimple();
         if (!esVacia()) {
             do{
                 if (aux.getEjecutivo().getNombre().equals(Nombre)
-                        && aux.getEjecutivo().getCedula()==Cedula
-                        && aux.getEjecutivo().getSucursal().equals(Sucursal)
-                        && aux.getEjecutivo().getEstado().equals(Estado)
-                        && aux.getEjecutivo().getNombre_Cliente().equals(Nombre_Cliente)) {
+                        && aux.getEjecutivo().getCedula()==Cedula) {
                     this.cantNodos = this.cantNodos--;
                 } else {
                     LCStemp.insertarFinal(aux.getEjecutivo());
@@ -45,7 +42,7 @@ public class ListaCircularSimple implements Serializable{
 
     //-----------------------------------------------------------------------
 
-    public ListaCircularSimple EditarDatosLCS(String Nombre, int Cedula, String Sucursal, String Estado, String Nombre_Cliente, String NombreE, int CedulaE, String SucursalE, String EstadoE, String Nombre_ClienteE) {
+    public ListaCircularSimple EditarDatosLCS(String Nombre, int Cedula, String Sucursal, String Estado, String NombreE, int CedulaE, String SucursalE, String EstadoE) {
 
         NodoLCS aux = getPrimero();
         ListaCircularSimple LCStemp = new ListaCircularSimple();
@@ -55,13 +52,11 @@ public class ListaCircularSimple implements Serializable{
                 if (aux.getEjecutivo().getNombre().equals(Nombre)
                         && aux.getEjecutivo().getCedula()==Cedula
                         && aux.getEjecutivo().getSucursal().equals(Sucursal)
-                        && aux.getEjecutivo().getEstado().equals(Estado)
-                        && aux.getEjecutivo().getNombre_Cliente().equals(Nombre_Cliente)) {
+                        && aux.getEjecutivo().getEstado().equals(Estado)) {
                     aux.getEjecutivo().setNombre(NombreE);
                     aux.getEjecutivo().setCedula(CedulaE);
                     aux.getEjecutivo().setSucursal(SucursalE);
                     aux.getEjecutivo().setEstado(EstadoE);
-                    aux.getEjecutivo().setNombre_Cliente(Nombre_ClienteE);
                 }
                 LCStemp.insertarFinal(aux.getEjecutivo());
 
